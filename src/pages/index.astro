@@ -1,0 +1,123 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { tutorials } from '../data/tutorials';
+---
+<StarlightPage frontmatter={{ title: 'A path through your saved videos', description: 'Darb turns long YouTube videos into focused study sessions. Pick your time, keep your place, and finish what you started.', template: 'splash', editUrl: false }}>
+  <div class="landing">
+    <section class="hero" aria-labelledby="_top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> FREE & OPEN SOURCE · درب</p>
+        <h1 id="_top">Less watch later.<br />More <span>learn today.</span></h1>
+        <p class="hero-description">That six-hour course doesn't need another bookmark. It needs a first session. Darb helps you make time, keep your place, and come back tomorrow.</p>
+        <div class="hero-actions"><a class="button primary" href="/docs/install/">Start with Darb <span aria-hidden="true">→</span></a><a class="button secondary" href="/docs/tutorials/">Explore the guides <span aria-hidden="true">↗</span></a></div>
+        <p class="hero-caption">Your courses stay in your browser. No Darb account needed.</p>
+      </div>
+      <div class="path-preview" aria-label="Illustration of a six-hour course divided into daily study sessions">
+        <div class="preview-heading"><span class="mini-logo">D</span><span>Your next small step</span><span class="preview-label">EXAMPLE PLAN</span></div>
+        <div class="course-label"><span class="play-icon" aria-hidden="true">▶</span><div><small>THE COURSE YOU SAVED</small><strong>Learn something you've been putting off.</strong></div><span>6h</span></div>
+        <div class="session-track">
+          <div class="session done"><span class="dot">✓</span><div><small>YESTERDAY</small><strong>Make a start</strong></div><span>30 min</span></div>
+          <div class="session current"><span class="dot">↗</span><div><small>TODAY</small><strong>Pick up where you left off</strong><p>One session. A little further along.</p></div><span>30 min</span></div>
+          <div class="session"><span class="dot">3</span><div><small>TOMORROW</small><strong>Keep the path going</strong></div><span>30 min</span></div>
+        </div>
+        <div class="preview-footer"><span><i></i> Saved locally</span><span>A course, one day at a time.</span></div>
+      </div>
+    </section>
+    <section class="start-section" aria-labelledby="start-title">
+      <div class="section-heading"><div><p class="eyebrow">A LITTLE STRUCTURE GOES A LONG WAY</p><h2 id="start-title">From saved to started.</h2></div><a href="/docs/first-course/">Your first course →</a></div>
+      <ol class="steps-grid">
+        <li><span class="step-number">1</span><h3>Bring a video.</h3><p>Open a YouTube course you want to finish and click Darb.</p></li>
+        <li><span class="step-number">2</span><h3>Make it fit your day.</h3><p>Choose 15, 30 or any number of minutes you can give it.</p></li>
+        <li><span class="step-number">3</span><h3>Come back to your place.</h3><p>Resume your session with your progress already saved.</p></li>
+      </ol>
+    </section>
+    <section class="guide-section" aria-labelledby="guides-title">
+      <div class="section-heading"><div><p class="eyebrow">THE DARB FIELD GUIDE</p><h2 id="guides-title">Find your next step.</h2></div><a href="/docs/introduction/">All documentation →</a></div>
+      <div class="guide-grid">
+        <a href="/docs/install/"><span class="guide-icon" aria-hidden="true">↓</span><h3>Get set up</h3><p>Install Darb in your browser and create your first course.</p><span class="guide-link">Start here →</span></a>
+        <a href="/docs/playlists/"><span class="guide-icon" aria-hidden="true">≡</span><h3>Build your learning path</h3><p>Bring videos together, take notes and organize your workspace.</p><span class="guide-link">Explore the workspace →</span></a>
+        <a href="/docs/ai/"><span class="guide-icon" aria-hidden="true">✳</span><h3>Bring your AI along</h3><p>Give Codex or Claude Code access to the courses you choose.</p><span class="guide-link">Connect your assistant →</span></a>
+      </div>
+      <p class="version-caption">Workspace and AI features require a newer build than the original store release. <a href="/docs/releases/">Check feature availability →</a></p>
+    </section>
+    <section class="tutorial-section" aria-labelledby="tutorial-title">
+      <div><p class="eyebrow">FOLLOW ALONG</p><h2 id="tutorial-title">A guide for every first.</h2><p>Go at your pace. Start with the written walkthroughs; video tutorials will live alongside them as they're recorded.</p><a href="/docs/tutorials/">Browse tutorials →</a></div>
+      <div class="tutorial-list">{tutorials.slice(1, 4).map((tutorial, i) => <a href={tutorial.guide}><span class="tutorial-number">0{i + 1}</span><div><strong>{tutorial.title}</strong><span>Written walkthrough</span></div><span aria-hidden="true">↗</span></a>)}</div>
+    </section>
+    <section class="community"><div><p class="eyebrow">BUILT IN THE OPEN</p><h2>Make the path better.</h2><p>Found a rough edge? Have an idea? Darb welcomes fixes, guides, design work and honest feedback.</p></div><a class="button secondary" href="/docs/contributing/">Contribute to Darb ↗</a></section>
+    <footer class="landing-footer"><span>Darb · <span lang="ar" dir="rtl">درب</span><br /><small>A small step toward finishing.</small></span><nav aria-label="Footer"><a href="/docs/privacy/">Privacy</a><a href="/docs/troubleshooting/">Help</a><a href="https://github.com/KhalidRouissi1/darb-youtube">GitHub ↗</a><a href="https://buymeacoffee.com/khalidrouissi">Support Darb ↗</a></nav></footer>
+  </div>
+</StarlightPage>
+<style>
+  :global(.landing h1), :global(.landing h2), :global(.landing h3) { margin: 0; }
+  :global(.landing a) { text-decoration: none; }
+  :global(.landing p) { margin: 0; }
+  .landing { max-width: 76rem; margin: 0 auto; }
+  .hero { display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 4rem; padding: 3.5rem 0 5.5rem; }
+  .eyebrow { font-size: .68rem; font-weight: 750; letter-spacing: .12em; color: var(--sl-color-gray-2); display: flex; align-items: center; gap: .55rem; }
+  .eyebrow > span { width: .45rem; height: .45rem; background: var(--sl-color-text-accent); border-radius: 50%; }
+  .hero h1 { font-size: clamp(2.6rem, 4.5vw, 4.5rem); line-height: 1.09; letter-spacing: -.06em; margin-block: 1.4rem !important; font-weight: 800; }
+  .hero h1 > span { color: var(--sl-color-text-accent); }
+  .hero-description { font-size: 1.08rem; line-height: 1.8; color: var(--sl-color-gray-2); max-width: 31rem; }
+  .hero-actions { display: flex; gap: .8rem; margin-block: 1.8rem 1rem; flex-wrap: wrap; }
+  .button { display: inline-flex; align-items: center; justify-content: center; gap: 1rem; border-radius: .55rem; padding: .8rem 1.1rem; font-weight: 650; font-size: .9rem; line-height: 1.5; transition: transform .15s; }
+  .button:hover { transform: translateY(-2px); }
+  .primary { background: var(--darb-orange); color: #fff; }
+  .secondary { border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-white); }
+  .hero-caption { color: var(--sl-color-gray-3); font-size: .76rem; }
+  .path-preview { border: 1px solid var(--sl-color-gray-5); border-radius: 1.25rem; background: var(--sl-color-bg); box-shadow: 0 20px 70px -40px #6e433744; transform: rotate(-1deg); overflow: hidden; }
+  .preview-heading { display: flex; align-items: center; gap: .6rem; padding: 1.2rem; border-bottom: 1px solid var(--sl-color-gray-5); font-size: .8rem; font-weight: 650; }
+  .mini-logo { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: .4rem; background: var(--darb-orange); color: #fff; font-weight: 800; }
+  .preview-label { margin-left: auto; color: var(--sl-color-gray-3); font-size: .53rem; letter-spacing: .09em; }
+  .course-label { display: flex; align-items: center; gap: .85rem; padding: 1.4rem 1.2rem; background: var(--sl-color-gray-6); }
+  .course-label small, .session small { display: block; font-size: .55rem; letter-spacing: .1em; color: var(--sl-color-gray-3); margin-bottom: .3rem; font-weight: 650; }
+  .course-label strong { font-size: .8rem; line-height: 1.4; display: block; }
+  .play-icon { width: 2.6rem; height: 2.6rem; display: grid; place-items: center; border: 1px solid var(--sl-color-gray-5); border-radius: .6rem; font-size: .85rem; flex-shrink: 0; }
+  .course-label > span:last-child { margin-left: auto; color: var(--sl-color-gray-3); font-size: .75rem; }
+  .session-track { padding: 1.2rem; }
+  .session { display: flex; gap: .8rem; align-items: center; padding: .9rem .6rem; position: relative; }
+  .session:not(:last-child)::after { content: ''; position: absolute; left: 1.44rem; top: 2.8rem; bottom: -.7rem; border-left: 1px dashed var(--sl-color-gray-4); z-index: 0; }
+  .dot { border: 1px solid var(--sl-color-gray-5); border-radius: 50%; width: 1.8rem; height: 1.8rem; display: grid; place-items: center; font-size: .75rem; flex-shrink: 0; background: var(--sl-color-bg); z-index: 1; }
+  .session strong { font-size: .83rem; font-weight: 600; }
+  .session > span:last-child { margin-left: auto; white-space: nowrap; color: var(--sl-color-gray-3); font-size: .7rem; }
+  .session.done .dot { color: #479574; }
+  .session.current { background: var(--sl-color-accent-low); border: 1px solid var(--sl-color-accent); border-radius: .65rem; margin-block: .6rem; padding-block: 1.15rem; }
+  .current .dot { background: var(--darb-orange); color: white; border-color: var(--darb-orange); }
+  .current small { color: var(--sl-color-text-accent); }
+  .session p { font-size: .65rem; color: var(--sl-color-gray-2); margin-top: .3rem; }
+  .preview-footer { display: flex; justify-content: space-between; padding: 1rem 1.2rem; border-top: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-3); font-size: .6rem; }
+  .preview-footer i { display: inline-block; width: .35rem; height: .35rem; border-radius: 50%; background: #479574; margin-right: .3rem; }
+  .start-section, .guide-section { border-top: 1px solid var(--sl-color-gray-5); padding-block: 3.5rem; }
+  .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 2rem; }
+  h2 { font-size: clamp(1.8rem, 3vw, 2.35rem); line-height: 1.2; margin-top: .75rem !important; }
+  .section-heading > a, .tutorial-section > div > a { font-size: .85rem; font-weight: 600; color: var(--sl-color-text-accent); }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; padding: 0; list-style: none; }
+  .step-number { display: grid; place-items: center; height: 1.8rem; width: 1.8rem; border: 1px solid var(--sl-color-gray-5); border-radius: 50%; font-size: .75rem; margin-bottom: 1rem; color: var(--sl-color-text-accent); }
+  h3 { font-size: 1.1rem; line-height: 1.5; }
+  .steps-grid p, .guide-grid p { font-size: .88rem; line-height: 1.8; color: var(--sl-color-gray-2); margin-top: .5rem; }
+  .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .guide-grid > a { padding: 1.5rem; border: 1px solid var(--sl-color-gray-5); border-radius: .85rem; color: var(--sl-color-text); display: flex; flex-direction: column; transition: border-color .15s; }
+  .guide-grid > a:hover { border-color: var(--sl-color-accent); }
+  .guide-icon { font-size: 1.6rem; color: var(--sl-color-text-accent); margin-bottom: 1rem; line-height: 1; }
+  .guide-link { display: block; margin-top: auto; padding-top: 1.7rem; font-size: .78rem; font-weight: 600; color: var(--sl-color-text-accent); }
+  .version-caption { font-size: .72rem; line-height: 1.7; color: var(--sl-color-gray-3); margin-top: 1rem !important; }
+  .version-caption a { color: var(--sl-color-text-accent); }
+  .tutorial-section { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; border-top: 1px solid var(--sl-color-gray-5); padding-block: 3.5rem; }
+  .tutorial-section p:not(.eyebrow) { color: var(--sl-color-gray-2); font-size: .9rem; line-height: 1.8; margin-block: 1rem; max-width: 26rem; }
+  .tutorial-list > a { display: flex; gap: 1rem; align-items: center; padding-block: 1.25rem; border-bottom: 1px solid var(--sl-color-gray-5); color: var(--sl-color-white); }
+  .tutorial-number { font-size: .8rem; color: var(--sl-color-gray-3); }
+  .tutorial-list strong { display: block; font-size: .9rem; }
+  .tutorial-list div > span { display: block; font-size: .7rem; color: var(--sl-color-gray-3); margin-top: .2rem; }
+  .tutorial-list a > span:last-child { margin-left: auto; color: var(--sl-color-text-accent); }
+  .community { display: flex; align-items: center; justify-content: space-between; gap: 2rem; background: var(--sl-color-gray-6); padding: 2.5rem; border-radius: 1rem; }
+  .community p:not(.eyebrow) { color: var(--sl-color-gray-2); font-size: .85rem; max-width: 34rem; margin-top: 1rem; }
+  .community a { flex-shrink: 0; }
+  .landing-footer { display: flex; justify-content: space-between; align-items: center; gap: 2rem; border-top: 1px solid var(--sl-color-gray-5); padding-block: 2rem; margin-top: 4rem; }
+  .landing-footer > span { font-weight: 750; }
+  .landing-footer small { color: var(--sl-color-gray-3); font-size: .7rem; font-weight: 400; }
+  .landing-footer nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .landing-footer a { color: var(--sl-color-gray-2); font-size: .75rem; }
+  @media (max-width: 65rem) { .hero { gap: 2rem; } .path-preview { transform: none; } .community { padding: 1.6rem; } }
+  @media (max-width: 48rem) { .hero { grid-template-columns: 1fr; padding-block: 1rem 3rem; gap: 2.5rem; } .hero h1 { font-size: 3rem; } .path-preview { max-width: 32rem; } .steps-grid, .guide-grid { grid-template-columns: 1fr; gap: 1.5rem; } .section-heading { align-items: start; flex-direction: column; } .tutorial-section { grid-template-columns: 1fr; gap: 1rem; } .community, .landing-footer { align-items: start; flex-direction: column; } .start-section, .guide-section, .tutorial-section { padding-block: 2.5rem; } }
+  @media (prefers-reduced-motion: reduce) { .button, .guide-grid > a { transition: none; } .button:hover { transform: none; } }
+</style>

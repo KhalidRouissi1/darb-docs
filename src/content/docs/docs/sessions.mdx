@@ -1,0 +1,24 @@
+---
+title: "Sessions and resume"
+description: "Understand session boundaries, saved checkpoints and course completion."
+---
+
+## A session is part of a video
+
+Darb splits a recorded video into time ranges based on your chosen study duration. A six-hour course with 30-minute sessions has 12 sessions. The last session can be shorter if the duration does not divide evenly.
+
+## Continue from your place
+
+Continue uses the active lesson and saved playback checkpoint. If you deliberately jump ahead to lesson eight, your next step should follow that position. It should not send you to an earlier lesson just because it is unfinished.
+
+Opening a different video in the same tab should update Darb's detected title. If it still shows the old video, [follow the detection checks](/docs/troubleshooting/#the-popup-shows-the-wrong-video).
+
+## At the session boundary
+
+Darb pauses and offers a continuation action. Continue should reuse the learning tab. A full video ending in a playlist also moves the playlist forward; [playlist completion](/docs/playlists/#completion-and-the-next-video) is separate from a single study-session boundary.
+
+## Completion is tracked through playback
+
+Skipping to a timestamp or opening a note does not mark all earlier sessions complete. The assistant cannot mark sessions completed for you.
+
+If the browser closes, Darb recovers from its locally saved active-session state. A few moments near the last save may need to be replayed.

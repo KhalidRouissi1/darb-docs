@@ -1,0 +1,43 @@
+---
+import { tutorials } from '../data/tutorials';
+interface Props { id: string }
+const tutorial = tutorials.find((item) => item.id === Astro.props.id);
+if (!tutorial) throw new Error(`Unknown tutorial: ${Astro.props.id}`);
+const hasVideo = Boolean(tutorial.videoId && /^[\w-]{11}$/.test(tutorial.videoId));
+---
+<aside class="tutorial" aria-label={tutorial.title}>
+  {hasVideo ? (
+    <>
+      <div class="video-shell" data-video-id={tutorial.videoId}>
+        <button type="button" class="load-video" aria-label={`Play ${tutorial.title} on YouTube`}>
+          <span class="play" aria-hidden="true">▶</span>
+          <strong>{tutorial.title}</strong>
+          <span>Load video · {tutorial.duration ?? 'YouTube'}</span>
+        </button>
+      </div>
+      <p>Loading this video connects to YouTube. <a href={`https://www.youtube.com/watch?v=${tutorial.videoId}`}>Watch on YouTube ↗</a></p>
+      {tutorial.chapters?.length ? <ul>{tutorial.chapters.map(chapter => <li><a href={`https://www.youtube.com/watch?v=${tutorial.videoId}&t=${chapter.seconds}s`}>{Math.floor(chapter.seconds / 60)}:{String(chapter.seconds % 60).padStart(2, '0')} · {chapter.title}</a></li>)}</ul> : null}
+      {tutorial.testedVersion && <small>Recorded with {tutorial.testedVersion}.</small>}
+    </>
+  ) : (
+    <div class="tutorial-fallback"><span aria-hidden="true">↗</span><div><strong>{tutorial.title}</strong><p>The written guide is ready. A video walkthrough is coming.</p></div>{Astro.url.pathname === tutorial.guide ? <span class="follow-below">Follow the steps below</span> : <a href={tutorial.guide}>Read the guide</a>}</div>
+  )}
+</aside>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.load-video').forEach((button) => {
+    button.addEventListener('click', () => {
+      const shell = button.closest<HTMLElement>('[data-video-id]');
+      const id = shell?.dataset.videoId;
+      if (!shell || !id || !/^[\w-]{11}$/.test(id)) return;
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${id}`;
+      frame.title = button.getAttribute('aria-label') ?? 'Darb video tutorial';
+      frame.allow = 'encrypted-media; picture-in-picture; fullscreen';
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.tabIndex = 0;
+      shell.replaceChildren(frame);
+      frame.focus();
+    });
+  });
+</script>

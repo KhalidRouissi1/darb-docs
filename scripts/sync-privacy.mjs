@@ -1,0 +1,5 @@
+import { readFile, writeFile } from 'node:fs/promises';
+const policy = await readFile(new URL('../policies/extension-privacy.md', import.meta.url), 'utf8');
+const body = policy.replace(/^# Darb Privacy Policy\s*/, '');
+const target = new URL('../src/content/docs/docs/privacy.md', import.meta.url);
+await writeFile(target, `---\ntitle: Privacy\ndescription: How Darb stores learning data, shares selected courses and handles optional AI access.\n---\n\n${body}\n\n## This documentation website\n\nThe site has no account system, analytics scripts or advertising. Its static host may process ordinary request information to deliver and protect the site. Cloudflare's own policies apply to that infrastructure.\n\nFonts and brand assets are served with the site. Tutorial videos connect to YouTube only after you choose to load them; YouTube then handles that request under its own policies. External links take you to the relevant site's policies. Theme preferences and documentation search operate in your browser.\n`);

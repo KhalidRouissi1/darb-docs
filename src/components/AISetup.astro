@@ -1,0 +1,63 @@
+---
+import { Code } from '@astrojs/starlight/components';
+interface Props { client: 'codex' | 'claude'; section: 'install' | 'share' | 'register' | 'verify' | 'snapshot' }
+const { client } = Astro.props;
+const name = client === 'codex' ? 'Codex' : 'Claude Code';
+---
+<section class="ai-setup">
+  {Astro.props.section === 'install' && <Fragment>
+  <p>In your terminal, run:</p>
+  <Code code={'npm install --global @khalidrouissi/darb-mcp\ndarb-mcp --version'} lang="sh" />
+  <p>Keep the global installation in place. Live browser registration points to that installed program.</p>
+  </Fragment>}
+  {Astro.props.section === 'share' && <Fragment>
+  <ol>
+    <li>In Darb → Dashboard → <strong>Assistant</strong>, select courses/playlists to share.</li>
+    <li>Click <strong>Save live access settings</strong> and approve native messaging. On Firefox, also approve the optional data-consent prompt.</li>
+    <li>Click <strong>Download private connection file</strong>. Keep it on your computer. Never paste its contents into chat, an issue or a repository.</li>
+  </ol>
+  </Fragment>}
+  {Astro.props.section === 'register' && <Fragment>
+  <p>Check the version printed above before choosing a route.</p>
+  <details>
+    <summary>Public package 0.5.4: explicit setup</summary>
+    <p>This version requires the {name} terminal command in PATH. Replace the file path with your downloaded file; choose your actual browser.</p>
+    <Code code={`darb-mcp setup --client ${client} --browser brave --connection /absolute/path/darb-connection.json`} lang="sh" />
+    <p>If Zsh offers to change <code>codex</code> to <code>.codex</code>, answer <strong>n</strong>.</p>
+    {client === 'codex' && <p>If you use only Codex desktop and its terminal command is missing, use the <a href="#desktop-manual-setup">manual desktop route below</a>. The 0.5.5 candidate adds automatic detection for supported desktop install locations.</p>}
+  </details>
+  <details>
+    <summary>0.5.5 candidate or a later release with guided setup</summary>
+    <p>The candidate is currently local and is not available from npm's verified 0.5.4 release. If your installed build includes the wizard, run:</p>
+    <Code code="darb-mcp setup" lang="sh" />
+    <ol>
+      <li>Choose <strong>{name}</strong>.</li>
+      <li>Choose <strong>Live browser connection</strong>.</li>
+      <li>Choose the browser containing Darb.</li>
+      <li>Choose your downloaded connection file from the numbered list, or paste its path.</li>
+    </ol>
+    <p>The wizard looks in Downloads and reports which server it registered. A separate Codex CLI installation is not required if a supported bundled desktop executable is found.</p>
+  </details>
+  </Fragment>}
+  {Astro.props.section === 'verify' && <Fragment>
+  <ol>
+    <li>Return to Darb → Assistant and click <strong>Save live access settings</strong> again.</li>
+    <li>Keep that browser profile open.</li>
+    <li>Restart or reconnect {name}, then open a fresh chat/session.</li>
+    <li>Ask: <strong>Use Darb to list my shared courses and show my next session.</strong></li>
+  </ol>
+  <p><strong>Success check:</strong> the assistant calls a Darb tool and returns a course you chose to share. A successful install message alone does not verify browser access.</p>
+  </Fragment>}
+  {Astro.props.section === 'snapshot' && <Fragment>
+  <p>In Assistant, select courses and choose <strong>Export selected data</strong>. Then use the snapshot route:</p>
+  <Code code={`darb-mcp setup --client ${client} --snapshot /absolute/path/darb-snapshot.json`} lang="sh" />
+  <p>This explicit setup needs the client's terminal command. With the newer wizard, choose <strong>Read-only exported snapshot</strong> instead. Restart the client and ask the same test question. Export again when you want fresh data.</p>
+  </Fragment>}
+</section>
+<style>
+  .ai-setup h2 { margin-top: 2.4rem; }
+  .ai-setup pre { padding: 1rem; overflow: auto; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; background: var(--sl-color-gray-6); font-size: .82rem; white-space: pre; }
+  .ai-setup details { border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; padding: 1rem; margin-block: 1rem; }
+  .ai-setup summary { cursor: pointer; font-weight: 650; }
+  .ai-setup li { margin-block: .55rem; }
+</style>

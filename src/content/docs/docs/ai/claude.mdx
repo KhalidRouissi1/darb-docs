@@ -1,0 +1,44 @@
+---
+title: "Connect Claude Code"
+description: "Connect Claude Code to selected Darb courses through the local MCP companion."
+---
+
+import AISetup from '../../../../components/AISetup.astro';
+import Tutorial from '../../../../components/Tutorial.astro';
+
+Use Claude Code to read shared courses and propose your next study step. You need Claude Code available as `claude` in your terminal, Node.js 20.19+ and Linux for guided/live setup.
+
+<Tutorial id="claude" />
+## Install the companion
+
+<AISetup client="claude" section="install" />
+
+## Share your courses
+
+<AISetup client="claude" section="share" />
+
+## Register the connection
+
+<AISetup client="claude" section="register" />
+
+## Reconnect and verify
+
+<AISetup client="claude" section="verify" />
+
+## Read-only alternative
+
+<AISetup client="claude" section="snapshot" />
+
+## Check registration
+
+In your terminal, use:
+
+```sh
+claude mcp list
+```
+
+Look for `darb-live` or `darb-snapshot`, depending on your mode. In a fresh Claude Code session, inspect `/mcp` and ask the test question. Approve any client tool-access prompts you understand.
+
+If a Darb action is proposed, review it in Darb → Assistant. A client tool permission does not replace Darb's separate approval for playback or saving a playlist.
+
+Next: [Try example prompts →](/docs/ai/prompts/)

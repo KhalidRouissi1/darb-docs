@@ -1,0 +1,30 @@
+---
+title: "Releases and feature availability"
+description: "Choose the right Darb release and understand the difference between store, source and companion versions."
+---
+
+## Public releases checked October 29, 2026
+
+| Distribution | Verified version | Where to get it |
+| --- | --- | --- |
+| GitHub Chromium extension | 0.1.0 | [Latest release](https://github.com/KhalidRouissi1/darb-youtube/releases/latest) |
+| Firefox Add-ons | 0.1.0 | [Mozilla listing](https://addons.mozilla.org/en-US/firefox/addon/darb/) |
+| npm MCP companion | 0.5.4 | [npm package](https://www.npmjs.com/package/@khalidrouissi/darb-mcp) |
+
+These are separate distributions. A companion version does not update your browser extension. Check the linked release pages for changes after this verification date.
+
+## Newer workspace features
+
+The local extension build is 0.5.4 and includes the workspace, playlists, notes and optional assistant access described in these guides. Its presence in the maintainer's checkout does not prove those changes have been pushed or published.
+
+Before building from source, check that the public repository contains the feature you need. Do not expect playlists or MCP in the original 0.1.0 store package.
+
+The local companion 0.5.5 candidate adds interactive setup and supported Codex desktop detection. Those fixes are not part of npm's verified 0.5.4 release. A new version will be announced only after publication.
+
+## Update carefully
+
+Use the same browser profile and extension entry to retain local course data. Unpacked builds require a manual download, replacement and reload. Store installations receive signed store updates.
+
+## Follow changes
+
+Use [GitHub releases](https://github.com/KhalidRouissi1/darb-youtube/releases) for published downloads and version notes. Report a regression with the exact browser extension and companion versions; they may differ.

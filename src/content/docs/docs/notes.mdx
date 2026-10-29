@@ -1,0 +1,41 @@
+---
+title: "Notes and timestamps"
+description: "Save video notes, jump to a moment and enable the floating notes bubble."
+---
+
+import Tutorial from '../../../components/Tutorial.astro';
+import ReleaseNotice from '../../../components/ReleaseNotice.astro';
+
+<ReleaseNotice />
+<Tutorial id="notes" />
+
+## Add a note to a video
+
+1. Create the video's course first.
+2. Open that video and find **Video notes** in the Darb popup or course page.
+3. Write the note. A title is optional.
+4. Press **Add note** to save it.
+
+With the matching video open, Darb captures the actual player time when you save. **Capture current time** lets you deliberately pin a moment. If no matching player is available, the note can save without a timestamp.
+
+## Go back to a moment
+
+Click a saved note's time button or timed note body to return to that position. Seeking does not mark earlier sessions complete.
+
+Existing notes without timestamps stay intact. Edit one and capture the current video time if you want to attach a moment.
+
+## Use the floating bubble
+
+Turn **Floating note mode** on in the extension popup. A notes bubble appears on supported video pages. Expand it to write and save without reopening the popup.
+
+Turn the same switch off to remove the bubble. Unsaved drafts do not survive a page reload, so save before leaving.
+
+## Workspace notes
+
+Use **New note** in Library for a standalone note. Attach a course for clickable timestamps and use the linked-material picker to connect notes, courses and playlists.
+
+Notes support headings, bold text and inline code. Raw HTML displays as text.
+
+## Privacy
+
+Notes stay in your browser profile. Current assistant exports and MCP responses exclude notes, even if you share the course they're attached to.

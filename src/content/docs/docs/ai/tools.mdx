@@ -1,0 +1,51 @@
+---
+title: "Tools and permissions"
+description: "Understand the eight live Darb MCP tools and which requests need review."
+---
+
+## Read shared learning data
+
+| Tool | What it does | Snapshot |
+| --- | --- | --- |
+| `darb_list_courses` | Lists shared course summaries and playlists | Yes |
+| `darb_get_course` | Reads one shared course | Yes |
+| `darb_get_next_session` | Finds a course or playlist's next session | Yes |
+| `darb_preview_study_plan` | Fits shared course sessions into a time budget | Yes |
+| `darb_get_selection` | Reads an explicitly shared YouTube selection draft | No |
+
+## Propose actions
+
+| Tool | What happens |
+| --- | --- |
+| `darb_preview_playlist` | Creates a proposal from the selected videos; does not save it |
+| `darb_request_playlist_save` | Requests saving a preview; you review it in Darb |
+| `darb_open_session` | Requests playback; you approve it in Darb |
+
+The live server advertises eight tools. Availability of a tool does not grant access to all data or actions: the browser checks sharing selections and scopes when it receives a request.
+
+## Choose the scopes you need
+
+In Assistant, choose the courses/playlists to share. Selection drafting and playback requests have separate opt-ins. Leave them off if you only want progress and study planning.
+
+Workspace notes, folders, tags and graph positions are excluded. There is no transcript reader, general browsing access, automatic completion tool or arbitrary browser-control tool in this API.
+
+## Review and revoke
+
+Review proposed playlist saves and playback requests in Darb. Reject anything you do not want. [Disconnect and revoke](/docs/ai/revoke/) when finished.
+
+## Other clients
+
+A desktop MCP client supporting stdio can run the installed companion:
+
+```json
+{
+  "mcpServers": {
+    "darb-snapshot": {
+      "command": "darb-mcp",
+      "args": ["--snapshot", "/absolute/path/export.json"]
+    }
+  }
+}
+```
+
+Use the actual executable path if the client cannot find it. Live mode uses `--live` with the installed private profile path after native-host installation. Windows/macOS live installation is not supported by the current installer.

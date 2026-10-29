@@ -1,0 +1,24 @@
+---
+title: "Live connection or snapshot?"
+description: "Choose current browser access or a read-only export for your AI client."
+---
+
+## Live browser connection
+
+The browser and companion communicate locally through native messaging and an authenticated private Unix socket. No public HTTP server is opened.
+
+Keep the selected browser profile open. A shared course's progress can be read as it changes. Extra selection-draft and playback scopes are optional and proposed actions still need review.
+
+The native host points to your installed Node and companion paths. If you move or remove either installation, rerun setup.
+
+## Read-only snapshot
+
+A snapshot contains the selected courses/playlists at export time. The assistant can list them, inspect a course, find a next session and preview a study plan.
+
+The browser can be closed after exporting. The assistant cannot open videos, save playlists or refresh the export itself. Export again and reconnect to update the data.
+
+## Which should I use?
+
+Choose a snapshot for an occasional plan or to try read-only sharing. Choose live mode for current progress and optional reviewed actions.
+
+Neither mode shares workspace notes. Treat both exports and connection files as private. A snapshot contains learning data; a connection file grants access to a selected browser profile.

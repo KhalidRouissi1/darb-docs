@@ -1,0 +1,42 @@
+---
+title: "Connect your AI"
+description: "Understand Darb\u2019s optional local MCP connection before setting up Codex or Claude Code."
+---
+
+import ReleaseNotice from '../../../components/ReleaseNotice.astro';
+
+Give your AI app access to the courses you choose to share. Ask what to study next, get a plan for your available time or review a proposed playlist.
+
+<ReleaseNotice />
+
+## What MCP means here
+
+MCP is the connection between Darb and a compatible AI app. The **Darb MCP companion** runs on your computer. It does not add an AI chat inside the extension or provide an AI subscription.
+
+Choose your guide:
+
+- [Connect Codex](/docs/ai/codex/)
+- [Connect Claude Code](/docs/ai/claude/)
+
+## Choose a connection
+
+| | Live browser connection | Read-only snapshot |
+| --- | --- | --- |
+| Data | Current shared browser state | Selected data frozen at export time |
+| Browser open | Yes, same profile | Not needed after export |
+| Playback or playlist requests | Optional scopes, reviewed in Darb | Unavailable |
+| Refresh | Reconnect if necessary | Export again |
+
+[Compare the modes](/docs/ai/modes/).
+
+## Requirements
+
+Guided setup and native browser installation currently support **Linux desktop**, with Brave, Chrome or Firefox. The companion needs **Node.js 20.19 or newer** and an installed compatible AI client. Windows and macOS live installers are not included.
+
+The interactive wizard and automatic Codex desktop detection are in the local **0.5.5 candidate**. npm's verified public release was **0.5.4** on October 29, 2026. The client guides include the public release's manual route as well as the newer wizard route.
+
+## Sharing is your choice
+
+Select specific courses/playlists in Assistant. Draft selection and playback access have separate controls. Proposed saves and playback actions require your approval. Notes, folders, tags and graph layout are excluded from current responses.
+
+Data an AI app receives may be sent to its model provider. [Read permissions](/docs/ai/tools/) and [privacy](/docs/privacy/) before connecting.

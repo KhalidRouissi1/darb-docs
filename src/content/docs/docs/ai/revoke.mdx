@@ -1,0 +1,30 @@
+---
+title: "Disconnect and revoke"
+description: "Stop the live connection and understand what revocation does."
+---
+
+## Revoke live access
+
+Open Darb → Dashboard → Assistant and choose **Disconnect and revoke**. This rotates the pairing key and stops future use of the old connection file.
+
+Previously saved connection files become invalid. To connect again, choose your sharing settings, download a fresh private file and rerun setup.
+
+## Remove the client entry
+
+Disable or remove `darb-live` in your AI client's MCP settings. If its terminal command is available, you can use the appropriate command:
+
+```sh
+codex mcp remove darb-live
+```
+
+```sh
+claude mcp remove darb-live
+```
+
+Remove `darb-snapshot` separately if you configured a snapshot server. Disabling a client entry alone is not a substitute for revoking a live pairing key.
+
+## Data already shared
+
+Revocation stops future access. It does not erase data already returned to an AI client, exported snapshots or conversations stored by that client's provider. Delete those copies through the relevant app if needed.
+
+Deleting a private downloaded file alone does not revoke the installed connection.

@@ -1,0 +1,58 @@
+---
+title: "Connect Codex"
+description: "Connect Codex desktop or CLI to the Darb courses you choose to share."
+---
+
+import AISetup from '../../../../components/AISetup.astro';
+import Tutorial from '../../../../components/Tutorial.astro';
+
+Use Codex to inspect shared course progress and plan your next study session. Live setup currently requires Linux, Node.js 20.19+ and a supported browser with Darb's Assistant workspace.
+
+<Tutorial id="codex" />
+## Install the companion
+
+<AISetup client="codex" section="install" />
+
+## Share your courses
+
+<AISetup client="codex" section="share" />
+
+## Register the connection
+
+<AISetup client="codex" section="register" />
+
+## Reconnect and verify
+
+<AISetup client="codex" section="verify" />
+
+## Read-only alternative
+
+<AISetup client="codex" section="snapshot" />
+
+## Desktop manual setup
+
+If the public companion cannot find `codex` in your terminal, install only the browser host first:
+
+```sh
+darb-mcp --install /absolute/path/darb-connection.json brave
+```
+
+The output includes **command**, **args** and the private installed configuration path. Use those exact values for a stdio server named `darb-live` in Codex's MCP configuration. Do not use the contents of your private connection file as configuration text.
+
+Codex desktop and CLI share MCP configuration on the same host. The default file is `~/.codex/config.toml`. Add a table like this using the actual output values:
+
+```toml
+[mcp_servers.darb-live]
+command = "/absolute/path/to/node"
+args = ["/absolute/path/to/darb-mcp.mjs", "--live", "/absolute/path/to/installed-profile.json"]
+```
+
+Preserve other settings and avoid duplicate `darb-live` tables. Then follow **Reconnect and verify** above. See [OpenAI's MCP configuration guide](https://learn.chatgpt.com/docs/extend/mcp) for client configuration details.
+
+## If the tools are missing
+
+Check that `darb-live` is enabled in Codex's MCP settings and start a new session after reconnecting. This documentation website cannot install or enable tools in an already-running chat.
+
+If the tool exists but says the browser is disconnected, reopen the same browser profile and save live access settings again. [More connection fixes](/docs/troubleshooting/).
+
+Next: [Try example prompts →](/docs/ai/prompts/)

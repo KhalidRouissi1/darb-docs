@@ -1,0 +1,6 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "darb-docs",
+  "compatibility_date": "2026-10-29",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" }
+}

@@ -1,0 +1,52 @@
+---
+title: "Install Darb"
+description: "Install Darb on Chrome, Brave, Edge or Firefox, and open your first course."
+---
+
+import Tutorial from '../../../components/Tutorial.astro';
+import ReleaseNotice from '../../../components/ReleaseNotice.astro';
+
+Install the extension, pin it, and open a recorded YouTube video.
+
+<Tutorial id="install" />
+
+## Chrome, Brave and Edge
+
+1. Open [Darb's latest GitHub release](https://github.com/KhalidRouissi1/darb-youtube/releases/latest).
+2. Download the file ending in **chromium.zip**. Avoid the source-code archives.
+3. **Extract the ZIP** into a permanent folder. Keep the folder after installation.
+4. Open your browser's extension manager:
+
+   | Browser | Address to paste in the address bar |
+   | --- | --- |
+   | Chrome | `chrome://extensions` |
+   | Brave | `brave://extensions` |
+   | Edge | `edge://extensions` |
+
+5. Enable **Developer mode**.
+6. Click **Load unpacked** and select the extracted folder containing `manifest.json`.
+7. Open the browser's extensions menu and pin Darb.
+
+The file picker expects a **folder**, so it will not let you select the ZIP itself.
+
+## Firefox
+
+Install from the [official Darb listing on Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/darb/). Firefox handles signed store updates.
+
+<ReleaseNotice />
+
+## Check it worked
+
+Open a normal YouTube watch page and click the Darb icon. The popup should show that video's title and duration. [Create your first course](/docs/first-course/).
+
+Opening Darb from another website can take you to your library; creating a course requires a supported video page.
+
+## Update a local installation
+
+Unpacked installations do not update automatically. Download and extract the new release, replace the files in the **same permanent folder**, and click Reload on Darb's extension card. Refresh already-open video pages.
+
+Keep the existing extension entry and browser profile to preserve local data. Removing the extension can erase its storage. Don't install a second copy as a substitute for an update.
+
+## Need the newer workspace?
+
+Until a newer release is published, advanced features require [building from source](/docs/development/). [Check releases](/docs/releases/) before choosing that route.

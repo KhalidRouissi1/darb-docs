@@ -1,0 +1,25 @@
+---
+import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import Search from '@astrojs/starlight/components/Search.astro';
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
+import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+---
+<div class="darb-header">
+  <SiteTitle />
+  <nav class="quick-links" aria-label="Quick links">
+    <a href="/docs/introduction/">Docs</a>
+    <a href="/docs/install/">Install Darb <span aria-hidden="true">↗</span></a>
+  </nav>
+  <div class="search"><Search /></div>
+  <div class="social"><SocialIcons /></div>
+  <ThemeSelect />
+</div>
+<style>
+  .darb-header { display: flex; align-items: center; gap: 1.5rem; height: 100%; max-width: 100rem; margin: auto; }
+  .quick-links { display: flex; align-items: center; gap: 1.25rem; font-size: .85rem; font-weight: 650; }
+  .quick-links a { color: var(--sl-color-text); text-decoration: none; white-space: nowrap; }
+  .quick-links a:last-child { color: var(--sl-color-text-accent); }
+  .search { margin-inline-start: auto; width: min(22rem, 32vw); }
+  .social { display: flex; align-items: center; }
+  @media (max-width: 49.99rem) { .darb-header { gap: .75rem; } .search { width: auto; } .social, .quick-links { display: none; } }
+</style>

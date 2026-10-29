@@ -1,0 +1,59 @@
+---
+title: "Troubleshooting"
+description: "Fix video detection, playlist progress, note timestamps and AI connection problems."
+---
+
+## Darb keeps reading the video
+
+1. Confirm you are on a recorded video's page with a known duration.
+2. Let an advertisement finish, then choose **Try again**.
+3. After updating the extension, reload it in your browser's extension manager and refresh the video page.
+4. Check that site access is allowed for the video's platform.
+
+Live streams and ambiguous multi-video pages may not be supported. X and Facebook access is optional and experimental.
+
+## The popup shows the wrong video
+
+If you moved from the homepage to a watch page, or opened another video in the same tab, the displayed title should change. Close and reopen the popup, then try again. If necessary, refresh the video page after reloading the extension.
+
+Report the old and new page types, browser version and extension version. Do not send private browsing data.
+
+## A video card opens instead of selecting
+
+Confirm selection mode is active through **Select videos on YouTube**. In that mode, the whole video card should select, including the thumbnail center. Exit selection mode to follow normal links.
+
+## Playlist completion stays at zero
+
+A session boundary partway through a video is not the same as a whole video ending. Let a short test video end naturally with Darb tracking it. The count should increase and the next video should open. If not, report the steps and versions through GitHub.
+
+## A note has no time
+
+A matching live video must be open to capture player time. Create the course first. Use **Capture current time**, save the note, and click its saved timestamp. Older untimed notes do not receive a timestamp automatically.
+
+## A folder move did not apply
+
+Select the items, choose a folder under **Move to…**, then press **Move**. Look for the destination confirmation. If another dashboard changed the workspace simultaneously, reload the latest state and retry.
+
+## MCP tools are missing
+
+Installing the npm package does not register a server by itself. Follow [your client's setup guide](/docs/ai/), confirm the Darb server is enabled in that client and restart/reconnect it. Start a fresh session. An older chat may not have the new tools.
+
+Check `darb-mcp --version`. Public 0.5.4 requires explicit options for `setup`; the 0.5.5 candidate introduces the interactive wizard. A candidate feature is not automatically available from npm.
+
+## Codex is not in PATH
+
+The public 0.5.4 setup expects the Codex terminal command. Use the [manual desktop route](/docs/ai/codex/#desktop-manual-setup) if you only have the desktop app. The newer candidate detects supported bundled desktop executables automatically.
+
+## Darb is not connected
+
+Open the exact browser profile used during setup. In Darb → Assistant, save live access settings again and accept the relevant permissions. Keep the browser running. If you revoked access, download a fresh private file and rerun setup.
+
+If Node.js or the global companion moved after an upgrade, rerun setup to update the native host's executable paths.
+
+## The assistant returns no courses
+
+Check the courses/playlists selected in Assistant and save the settings. Confirm you paired the right browser profile. For snapshots, export again; changes in the browser do not update an existing export.
+
+## Report an issue
+
+[Open a GitHub issue](https://github.com/KhalidRouissi1/darb-youtube/issues/new/choose) with the browser, OS, extension/companion versions, steps and expected result. Remove personal information and tokens from errors or screenshots. Never attach a private connection file.
